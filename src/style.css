@@ -1,0 +1,366 @@
+* {
+  box-sizing: border-box;
+  color: #333;
+}
+
+body {
+  background-color: #81a69b;
+  background-image: url(http://pets-images.dev-apis.com/pets/wallpaperB.jpg);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+.search-params {
+  margin: 0 auto;
+  width: 1100px;
+}
+
+.search-params form {
+  background: #faeff0;
+  border-radius: 6px;
+  box-shadow: 0px 0px 12px #aaa, -0px -0px 12px #fff;
+  float: left;
+  margin: 0px 25px 0px 0px;
+  padding: 35px 15px 15px 15px;
+  width: 360px;
+}
+
+.search {
+  background: #faeff0;
+  border-radius: 6px;
+  box-shadow: 0px 0px 12px #aaa, -0px -0px 12px #fff;
+  float: left;
+  margin-bottom: 25px;
+  padding: 15px;
+  width: 715px;
+}
+
+.details {
+  background: #faeff0;
+  border-radius: 6px;
+  box-shadow: 0px 0px 12px #aaa, -0px -0px 12px #fff;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  padding: 15px;
+  width: 1100px;
+}
+
+.pet {
+  border-bottom: #333 2px solid;
+  display: block;
+  height: 130px;
+  margin: 25px 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.pet img {
+  min-height: 100px;
+  width: 100px;
+}
+
+.info {
+  flex-direction: column;
+  float: left;
+  height: 100px;
+  justify-content: space-around;
+  padding-top: 10px;
+  width: 80%;
+}
+
+.image-container {
+  clip-path: circle(50% at 50% 50%);
+  float: left;
+  height: 100px;
+  margin: 0px 20px 0px 10px;
+  width: 100px;
+}
+
+.pet h1 {
+  color: #333;
+  font-size: 30px;
+  font-weight: normal;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 95%;
+}
+
+header > a,
+#root > div > h1 {
+  background-image: url(http://static.frontendmasters.com/resources/2019-05-02-complete-intro-react-v5/image-logo.png);
+  display: inline-block;
+  filter: brightness(150%);
+  height: 76px;
+  margin: 20px 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 279px;
+}
+
+.pet h2 {
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+header a {
+  color: #333;
+  display: block;
+  font-size: 3px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  text-decoration: none;
+}
+
+header {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px 0px 0px 0px;
+  width: 1100px;
+}
+
+.details p {
+  line-height: 1.5;
+  padding: 0px 15px;
+}
+
+.details h1 {
+  color: #333;
+  font-size: 60px;
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.details h2 {
+  margin: 5px 0px 20px 0px;
+  text-align: center;
+}
+
+.carousel {
+  align-items: center;
+  display: flex;
+  height: 400px;
+  justify-content: space-around;
+  margin-top: 8px;
+}
+
+.carousel > img {
+  max-height: 400px;
+  max-width: 45%;
+}
+
+.carousel-smaller {
+  width: 50%;
+}
+
+.carousel-smaller > img {
+  border: 2px solid #333;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 100px;
+  margin: 15px;
+  width: 100px;
+}
+
+.carousel-smaller > img.active {
+  border-color: #333;
+  opacity: 0.6;
+}
+
+.search-params label {
+  display: block;
+  width: 60px;
+}
+
+.search-params input,
+.search-params select {
+  font-size: 18px;
+  height: 30px;
+  margin-bottom: 30px;
+  width: 325px;
+}
+
+.search-params button,
+#modal button,
+#modal a,
+.details button {
+  background-color: #ad343e;
+  border: #333 1px solid;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 18px;
+  margin: 0 auto;
+  padding: 5px 25px;
+}
+
+#modal a {
+  display: inline-block;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.search-params button:hover {
+  background-color: #122622;
+}
+
+.search-params button:active {
+  background-color: #5f1d22;
+}
+
+.search-params button:focus {
+  border: 1px solid cornflowerblue;
+}
+
+#modal {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+#modal:empty {
+  display: none;
+}
+
+#modal > div {
+  background: #faeff0;
+  background-color: white;
+  border-radius: 30px;
+  max-width: 500px;
+  padding: 15px;
+  text-align: center;
+}
+
+#modal .buttons button {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+@media only screen and (max-width: 1129px) {
+  header {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px 0px 0px 0px;
+    width: 95%;
+  }
+
+  .search-params {
+    width: 95%;
+  }
+
+  .search-params form {
+    margin-bottom: 20px;
+  }
+
+  .search {
+    border-radius: 9px;
+    float: left;
+    margin-bottom: 25px;
+    padding: 15px;
+    width: 55%;
+  }
+
+  .details {
+    border-radius: 9px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    padding: 15px;
+    width: 95%;
+  }
+
+  .info {
+    width: 65%;
+  }
+
+  .info h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .info h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 945px) {
+  .search-params {
+    width: 95%;
+  }
+
+  .search {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .pet {
+    height: 200px;
+  }
+
+  .info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .image-container {
+    float: none;
+    margin: 0 auto;
+  }
+  .carousel-smaller > img {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.loading-pane {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+form .pet {
+  float: unset;
+  margin: 0 auto;
+}
+
+.loader {
+  animation: spin 1s linear infinite;
+  font-size: 100px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mini.loading-pane {
+  height: 34px;
+}
+
+.mini .loader {
+  font-size: 34px;
+}
