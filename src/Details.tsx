@@ -1,19 +1,24 @@
-import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useContext, useState } from "react";
 import AdoptedPetContext from "./AdoptedPetContext";
 import Modal from "./Modal";
+import ErrorBoundary from "./ErrorBoundary";
 import fetchPet from "./fetchPet";
 import Carousel from "./Carousel";
-import ErrorBoundary from "./ErrorBoundary";
 
 const Details = () => {
-  const navigate = useNavigate();
-  // current state is never needed here so i leave it undefined and setAdoptedPet is the function to update the state.
-  const [, setAdoptedPet] = useContext(AdoptedPetContext);
-  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
+
+  if (!id) {
+    throw new Error("id not found");
+  }
+
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const results = useQuery(["details", id], fetchPet);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
   if (results.isLoading) {
     return (
@@ -23,17 +28,20 @@ const Details = () => {
     );
   }
 
-  const pet = results.data.pets[0];
-  const { animal, breed, city, state, description, name } = pet;
+  const pet = results?.data?.pets[0];
+
+  if (!pet) {
+    throw new Error("pet not found");
+  }
 
   return (
     <div className="details">
       <Carousel images={pet.images} />
       <div>
-        <h1>{name}</h1>
-        <h2>{`${animal} — ${breed} — ${city}, ${state}`}</h2>
-        <button onClick={() => setShowModal(true)}>Adopt {name}</button>
-        <p>{description}</p>
+        <h1>{pet.name}</h1>
+        <h2>{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
+        <button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
+        <p>{pet.description}</p>
         {showModal ? (
           <Modal>
             <div>
@@ -55,12 +63,12 @@ const Details = () => {
       </div>
     </div>
   );
-}
+};
 
-export default function DetailsErrorBoundary(props) {
+export default function DetailsErrorBoundary() {
   return (
     <ErrorBoundary>
-      <Details {...props} />
+      <Details />
     </ErrorBoundary>
   );
 }
